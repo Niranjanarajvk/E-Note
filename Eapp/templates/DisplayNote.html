@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'Home.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Table with stripped rows</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+
+                    <th scope="col">Notes Title</th>
+                    <th scope="col">Notes Description</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in data %}
+                  <tr>
+                    <td>{{i.NotesTitle}}</td>
+                    <td>{{i.NotesDescription}}</td>
+                    <td>
+                      <form action="{% url 'editnote'  dataid=i.id %}">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                      </form>
+                    </td>
+                     <td>
+                      <form action="{% url 'delnote'  dataid=i.id %}">
+                        <button type="submit" class="btn btn-primary" onclick="return confirm('Are your sure to Delete ?')">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+
+
+                {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+</body>
+</html>
+{% endblock %}

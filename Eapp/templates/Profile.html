@@ -1,0 +1,58 @@
+<!doctype html>
+{% extends 'Home.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Table with stripped rows</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                      <th scope="col">Mobile Number</th>
+                    <th scope="col">Edit</th>
+                       <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in data %}
+                  <tr>
+                    <td>{{i.Name}}</td>
+                    <td>{{i.Email}}</td>
+                      <td>{{i.MobileNumber}}</td>
+                       <td>
+                      <form action="{% url 'editprofile'  dataid=i.id %}">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                      </form>
+                    </td>
+                        <td>
+                      <form action="{% url 'delprofile'  dataid=i.id %}">
+                        <button type="submit" class="btn btn-primary" onclick="return confirm('Are your sure to Delete ?')">Delete</button>
+                      </form>
+                    </td>
+
+                {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+</body>
+</html>
+{% endblock %}
+
+

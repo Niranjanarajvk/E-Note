@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'Home.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <form class="row g-3" method="post" action="{% url 'updateprofile' dataid=data.id %}">
+                  {% csrf_token %}
+                <div class="col-12">
+                  <label for="inputNanme4" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="inputNanme4" required name="name" value="{{data.Name}}">
+                </div>
+                <div class="col-12">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" required name="email" value="{{data.Email}}">
+                </div>
+                    <div class="col-12">
+                  <label for="inputNumber" class="form-label">Mobile Number</label>
+                  <input type="number" class="form-control" id="inputNumber" required maxlength="10" name="mob" value="{{data.MobileNumber}}">
+                </div>
+                  <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </form><!-- Vertical Form -->
+</body>
+</html>
+{% endblock %}
